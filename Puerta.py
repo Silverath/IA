@@ -1,3 +1,5 @@
+import itertools
+
 class Puerta(object):
     entrada1 = int
     entrada2 = int
@@ -46,6 +48,8 @@ class Conexion(object):
         self.puerta_entrada2 = puerta_entrada2
         if puerta_entrada2 == None:
             self.puerta_entrada2 = 0
+        if puerta_entrada1 == None:
+            self.puerta_entrada1 = 0
         self.puerta_salida = puerta_salida
 
         self.puerta_salida.salida = self.salida_resultante()
@@ -76,3 +80,20 @@ class Conexion(object):
                 return 0
             else:
                 return 1 
+
+def calcular_salida(entrada, circuito):
+    salida = []
+    for i in range(len(circuito)):
+        for j in range(len(i)): 
+            if i == 0:
+                conexion = circuito[i][j]
+                conexion.puerta_salida.entrada1 = entrada[j]
+                conexion.puerta_salida.salida = conexion.puerta_salida.salida_resultante
+            elif i == len(i) - 1:
+                conexion = circuito[i][j]
+                salida[j] = conexion.puerta_salida.salida
+            else:
+                conexion = circuito[i][j]
+                conexion.puerta_salida.salida = conexion.puerta_salida.salida_resultante
+        
+    return salida
