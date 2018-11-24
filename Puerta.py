@@ -1,10 +1,10 @@
 import itertools
 
+puertas_dañadas()
 class Puerta(object):
     entrada1 = int
     entrada2 = int
     salida = int
-    salida_real = salida_esperada
     def __init__(self, tipo_puerta):
         self.tipo = tipo_puerta
         self.salida_real = self.salida_esperada
@@ -80,7 +80,7 @@ class Conexion(object):
                 return 0
             else:
                 return 1 
-
+                
 def calcular_salida(entrada, circuito):
     salida = []
     for i in range(len(circuito)):
