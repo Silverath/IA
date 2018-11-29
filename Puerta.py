@@ -1,6 +1,6 @@
 # coding=utf-8
 import itertools
-import random
+import random as rand
 
 class Puerta(object):
     
@@ -12,19 +12,31 @@ class Puerta(object):
         self.entrada2 = int
         self.salida = int
         self.tipo = int
+        self.id = rand.randint(0, 1000)
 
     def __str__(self):
         if self.tipo == 0:
-            return 'AND'
+            return 'AND, ' + str(self.id)
         if self.tipo == 1:
-            return 'OR'
+            return 'OR, ' + str(self.id)
         if self.tipo == 2:
-            return 'NOT'
+            return 'NOT, ' + str(self.id)
         if self.tipo == 3:
-            return 'NAND'
+            return 'NAND, ' + str(self.id)
         if self.tipo == 4:
-            return 'AND'
-        
+            return 'XOR, ' + str(self.id)
+
+    def __repr__(self):
+        if self.tipo == 0:
+            return 'AND, ' + str(self.id)
+        if self.tipo == 1:
+            return 'OR, ' + str(self.id)
+        if self.tipo == 2:
+            return 'NOT, ' + str(self.id)
+        if self.tipo == 3:
+            return 'NAND, ' + str(self.id)
+        if self.tipo == 4:
+            return 'XOR, ' + str(self.id)
 
     def salida_resultante(self):
         #AND
